@@ -330,12 +330,11 @@ footer p {
 }
 
 figure {
-  display: grid;
-  grid-template-rows: minmax(300px, 1fr) auto;
+  position: relative;
   min-height: 300px;
   margin: 0;
   overflow: hidden;
-  background: #fff;
+  background: #111;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   box-shadow: 0 14px 36px rgba(18, 18, 18, 0.09);
@@ -352,17 +351,32 @@ figure img {
   transition: transform 0.45s ease;
 }
 
+figure::after {
+  position: absolute;
+  inset: auto 0 0;
+  height: 46%;
+  content: "";
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0));
+  pointer-events: none;
+}
+
 figure:hover img {
   transform: scale(1.04);
 }
 
 figcaption {
-  padding: 18px 20px 20px;
-  background: #fff;
-  color: var(--ink);
-  font-size: clamp(1.05rem, 1.3vw, 1.24rem);
+  position: absolute;
+  right: clamp(16px, 2vw, 24px);
+  bottom: clamp(16px, 2vw, 24px);
+  left: clamp(16px, 2vw, 24px);
+  z-index: 1;
+  padding: 0;
+  background: transparent;
+  color: #fff;
+  font-size: clamp(1.25rem, 1.75vw, 1.62rem);
   font-weight: 600;
-  line-height: 1.28;
+  line-height: 1.16;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.72);
 }
 
 .process-section {
@@ -488,8 +502,7 @@ footer p {
 
   figure,
   figure.featured {
-    min-height: 0;
-    grid-template-rows: minmax(320px, 58vh) auto;
+    min-height: min(430px, 70vh);
     grid-row: auto;
   }
 
