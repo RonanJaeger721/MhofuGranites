@@ -30,6 +30,12 @@ body {
   line-height: 1.55;
 }
 
+body:not(.motion-ready) .reveal,
+body:not(.motion-ready) .reveal-item {
+  opacity: 1;
+  transform: none;
+}
+
 img {
   display: block;
   width: 100%;
@@ -51,6 +57,7 @@ a {
   background: rgba(251, 250, 247, 0.92);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(16px);
+  animation: headerDrop 0.65s ease both;
 }
 
 .brand {
@@ -58,6 +65,11 @@ a {
   align-items: center;
   gap: 12px;
   text-decoration: none;
+  transition: transform 0.24s ease;
+}
+
+.brand:hover {
+  transform: translateY(-1px);
 }
 
 .brand-mark {
@@ -93,6 +105,7 @@ nav a,
 .text-link,
 footer a {
   text-decoration: none;
+  transition: color 0.22s ease, transform 0.22s ease, background 0.22s ease, border-color 0.22s ease;
 }
 
 nav a:hover,
@@ -135,6 +148,7 @@ footer a:hover {
 .hero-media img {
   height: 100%;
   object-fit: cover;
+  animation: heroDrift 8s ease-out both;
 }
 
 .hero-content {
@@ -142,6 +156,7 @@ footer a:hover {
   width: min(780px, calc(100% - 36px));
   margin: 0 0 clamp(42px, 8vw, 92px) clamp(18px, 7vw, 88px);
   color: #fff;
+  animation: fadeUp 0.9s 0.12s ease both;
 }
 
 .eyebrow {
@@ -211,6 +226,12 @@ h3 {
   border: 1px solid transparent;
   font-weight: 650;
   text-decoration: none;
+  transition: transform 0.24s ease, box-shadow 0.24s ease, background 0.24s ease, border-color 0.24s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(18, 18, 18, 0.16);
 }
 
 .button.primary {
@@ -255,6 +276,14 @@ footer {
   background: var(--stone);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.intro-band div:hover,
+.service-list article:hover,
+.steps article:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 36px rgba(18, 18, 18, 0.1);
 }
 
 .intro-band span,
@@ -316,6 +345,7 @@ footer p {
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   box-shadow: 0 10px 30px rgba(18, 18, 18, 0.06);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
 }
 
 .section-heading {
@@ -338,6 +368,7 @@ figure {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   box-shadow: 0 14px 36px rgba(18, 18, 18, 0.09);
+  transition: transform 0.32s ease, box-shadow 0.32s ease;
 }
 
 figure.featured {
@@ -364,6 +395,11 @@ figure:hover img {
   transform: scale(1.04);
 }
 
+figure:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 54px rgba(18, 18, 18, 0.16);
+}
+
 figcaption {
   position: absolute;
   right: clamp(16px, 2vw, 24px);
@@ -377,6 +413,11 @@ figcaption {
   font-weight: 600;
   line-height: 1.16;
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.72);
+  transition: transform 0.28s ease;
+}
+
+figure:hover figcaption {
+  transform: translateY(-3px);
 }
 
 .process-section {
@@ -444,6 +485,104 @@ footer {
 footer p {
   margin: 0;
   color: rgba(255, 255, 255, 0.68);
+}
+
+.motion-ready .reveal,
+.motion-ready .reveal-item {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.72s ease, transform 0.72s ease;
+}
+
+.motion-ready .reveal.is-visible,
+.motion-ready .reveal-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.motion-ready .intro-band.is-visible div,
+.motion-ready .service-list.is-visible article,
+.motion-ready .gallery.is-visible figure,
+.motion-ready .steps.is-visible article {
+  animation: fadeUp 0.7s ease both;
+}
+
+.motion-ready .intro-band.is-visible div:nth-child(2),
+.motion-ready .service-list.is-visible article:nth-child(2),
+.motion-ready .gallery.is-visible figure:nth-child(2),
+.motion-ready .steps.is-visible article:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.motion-ready .intro-band.is-visible div:nth-child(3),
+.motion-ready .service-list.is-visible article:nth-child(3),
+.motion-ready .gallery.is-visible figure:nth-child(3),
+.motion-ready .steps.is-visible article:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.motion-ready .service-list.is-visible article:nth-child(4),
+.motion-ready .gallery.is-visible figure:nth-child(4) {
+  animation-delay: 0.24s;
+}
+
+.motion-ready .gallery.is-visible figure:nth-child(5) {
+  animation-delay: 0.32s;
+}
+
+.motion-ready .gallery.is-visible figure:nth-child(6) {
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes headerDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroDrift {
+  from {
+    transform: scale(1.04);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .motion-ready .reveal,
+  .motion-ready .reveal-item {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @media (max-width: 900px) {
