@@ -506,6 +506,48 @@ figure:hover figcaption {
   background: var(--stone);
 }
 
+.gallery-new {
+  height: 510px;
+  min-height: 0;
+}
+
+.gallery-new img {
+  object-fit: contain;
+  background: #eee;
+}
+
+.gallery-product img {
+  background: #fff;
+}
+
+.kitchen-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  align-items: center;
+  gap: 44px;
+}
+
+.kitchen-section h2 {
+  font-size: 2.5rem;
+}
+
+.kitchen-photo {
+  min-height: 0;
+}
+
+.kitchen-photo img {
+  height: auto;
+  min-height: 0;
+}
+
+.kitchen-photo figcaption {
+  bottom: 24%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  font-size: 1.25rem;
+}
+
 .steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -678,6 +720,10 @@ footer p {
 }
 
 @media (max-width: 900px) {
+  .kitchen-section {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
   .site-header {
     grid-template-columns: 1fr auto;
   }
@@ -751,6 +797,15 @@ footer p {
   figure.featured {
     min-height: min(430px, 70vh);
     grid-row: auto;
+  }
+
+  .gallery-new {
+    height: 500px;
+    min-height: 0;
+  }
+
+  .kitchen-photo {
+    min-height: 0;
   }
 
   footer {
