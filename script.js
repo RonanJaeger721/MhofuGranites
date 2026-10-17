@@ -1,9 +1,9 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
-const animatedElements = document.querySelectorAll(".reveal, .reveal-item");
+const animatedElements = document.querySelectorAll(".reveal, .reveal-item, .gallery-new");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-if (animatedElements.length && !prefersReducedMotion) {
+if (animatedElements.length && !prefersReducedMotion && "IntersectionObserver" in window) {
   document.body.classList.add("motion-ready");
 
   const revealObserver = new IntersectionObserver(
@@ -15,7 +15,7 @@ if (animatedElements.length && !prefersReducedMotion) {
         }
       });
     },
-    { threshold: 0.16, rootMargin: "0px 0px -8% 0px" }
+    { threshold: 0, rootMargin: "0px 0px -24px 0px" }
   );
 
   animatedElements.forEach((element) => revealObserver.observe(element));
